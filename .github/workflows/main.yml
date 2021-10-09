@@ -1,0 +1,26 @@
+name: test_dep
+
+on:
+  push:
+    branches: ['master']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: yarn install
+      - name: Check DEP
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const tag = process.env.GITHUB_REF.split('/').slice(-1)[0]
+            const fact = require('@sharelist/webdav')
+            console.log(fact)
