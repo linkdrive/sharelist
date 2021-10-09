@@ -22,5 +22,9 @@ jobs:
         with:
           script: |
             const tag = process.env.GITHUB_REF.split('/').slice(-1)[0]
-            const fact = require('@sharelist/webdav')
-            console.log(fact)
+            const fs = require('fs)
+            fs.readFile('node_modules/@sharelist/webdav/package.json', (err, data) => {
+              if (err) throw err;
+              console.log(data);
+            });
+         
