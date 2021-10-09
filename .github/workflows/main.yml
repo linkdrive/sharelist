@@ -17,9 +17,8 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: |
+          rm -rf packages/sharelist-webdav
           yarn install
-          cd packages/sharelist
-          yarn add @sharelist/webdav@0.1.5
       - name: Check DEP
         uses: actions/github-script@v4
         with:
