@@ -18,6 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
+          cd package/sharelist
           yarn add @sharelist/webdav@0.1.5
       - name: Check DEP
         uses: actions/github-script@v4
