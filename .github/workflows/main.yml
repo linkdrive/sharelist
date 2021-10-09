@@ -21,10 +21,6 @@ jobs:
         uses: actions/github-script@v4
         with:
           script: |
-            const tag = process.env.GITHUB_REF.split('/').slice(-1)[0]
             const fs = require('fs')
-            fs.readFile('node_modules/@sharelist/webdav/package.json', (err, data) => {
-              if (err) throw err;
-              console.log(data);
-            });
-         
+            const data = fs.readFileSync('node_modules/@sharelist/webdav/package.json', 'utf8');
+            console.log(data)
